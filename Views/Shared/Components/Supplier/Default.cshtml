@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Supplier>
+
+<div class="selectBox-cont">
+	@foreach (var item in Model)
+	{
+		<label class="custom_check w-100">
+			<input type="checkbox" name="username">
+			<span class="checkmark"></span> @item.Name
+		</label>
+	}
+</div>

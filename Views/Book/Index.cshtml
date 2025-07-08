@@ -1,0 +1,364 @@
+﻿<div class="main-wrapper listing-page">
+
+	<!-- Breadscrumb Section -->
+	<div class="breadcrumb-bar">
+		<div class="container">
+			<div class="row align-items-center text-center">
+				<div class="col-md-12 col-12">
+					<h2 class="breadcrumb-title">Car Listings</h2>
+					<nav aria-label="breadcrumb" class="page-breadcrumb">
+						<ol class="breadcrumb">
+							<li class="breadcrumb-item"><a href="index.html">Home</a></li>
+							<li class="breadcrumb-item"><a href="javascript:void(0);">Listings</a></li>
+							<li class="breadcrumb-item active" aria-current="page">Car Listings</li>
+						</ol>
+					</nav>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Breadscrumb Section -->
+	<!-- Search -->
+	<div class="section-search page-search">
+		<div class="container">
+			<div class="search-box-banner">
+				<form action="listing-grid.html">
+					<ul class="align-items-center">
+						<li class="column-group-main">
+							<div class="input-block">
+								<label>Pickup Location</label>
+								<div class="group-img">
+									<input type="text" class="form-control" placeholder="Enter City, Airport, or Address">
+									<span><i class="feather-map-pin"></i></span>
+								</div>
+							</div>
+						</li>
+						<li class="column-group-main">
+							<div class="input-block">
+								<label>Pickup Date</label>
+							</div>
+							<div class="input-block-wrapp">
+								<div class="input-block date-widget">
+									<div class="group-img">
+										<input type="text" class="form-control datetimepicker" placeholder="04/11/2023">
+										<span><i class="feather-calendar"></i></span>
+									</div>
+								</div>
+								<div class="input-block time-widge">
+									<div class="group-img">
+										<input type="text" class="form-control timepicker" placeholder="11:00 AM">
+										<span><i class="feather-clock"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="column-group-main">
+							<div class="input-block">
+								<label>Return Date</label>
+							</div>
+							<div class="input-block-wrapp">
+								<div class="input-block date-widge">
+									<div class="group-img">
+										<input type="text" class="form-control datetimepicker" placeholder="04/11/2023">
+										<span><i class="feather-calendar"></i></span>
+									</div>
+								</div>
+								<div class="input-block time-widge">
+									<div class="group-img">
+										<input type="text" class="form-control timepicker" placeholder="11:00 AM">
+										<span><i class="feather-clock"></i></span>
+									</div>
+								</div>
+							</div>
+						</li>
+						<li class="column-group-last">
+							<div class="input-block">
+								<div class="search-btn">
+									<button class="btn search-button" type="submit"> <i class="fa fa-search" aria-hidden="true"></i>Search</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+	<!-- /Search -->
+	<!-- Sort By -->
+	<div class="sort-section">
+		<div class="container">
+			<div class="sortby-sec">
+				<div class="sorting-div">
+					<div class="row d-flex align-items-center">
+						<div class="col-xl-4 col-lg-3 col-sm-12 col-12">
+							<div class="count-search">
+								<p>Showing 1-9 of 154 Cars</p>
+							</div>
+						</div>
+						<div class="col-xl-8 col-lg-9 col-sm-12 col-12">
+							<div class="product-filter-group">
+								<div class="sortbyset">
+									<ul>
+										<li>
+											<span class="sortbytitle">Show : </span>
+											<div class="sorting-select select-one">
+												<select class="form-control select">
+													<option>5</option>
+													<option>10</option>
+													<option>15</option>
+													<option>20</option>
+													<option>30</option>
+												</select>
+											</div>
+										</li>
+										<li>
+											<span class="sortbytitle">Sort By </span>
+											<div class="sorting-select select-two">
+												<select class="form-control select">
+													<option>Newest</option>
+													<option>Relevance</option>
+													<option>Low to High</option>
+													<option>High to Low</option>
+													<option>Best Rated</option>
+													<option>Distance</option>
+													<option>Popularity</option>
+												</select>
+											</div>
+										</li>
+									</ul>
+								</div>
+								<div class="grid-listview">
+									<ul>
+										<li>
+											<a href="listing-grid.html" class="active">
+												<i class="feather-grid"></i>
+											</a>
+										</li>
+										<li>
+											<a href="listing-list.html">
+												<i class="feather-list"></i>
+											</a>
+										</li>
+										<li>
+											<a href="listing-map.html">
+												<i class="feather-map-pin"></i>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /Sort By -->
+	<!-- Car Grid View -->
+	<section class="section car-listing pt-0">
+		<div class="container">
+			<div class="row">
+				<div class="col-xl-3 col-lg-4 col-sm-12 col-12 theiaStickySidebar">
+					<form action="#" autocomplete="off" class="sidebar-form">
+						<div class="sidebar-heading">
+							<h3>What Are You Looking For:</h3>
+						</div>
+						<div class="accord-list">
+							<div class="accordion" id="accordionMain1">
+								<div class="card-header-new" id="headingOne">
+									<h6 class="filter-title">
+										<a href="javascript:void(0);" class="w-100" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+											Nhóm sản phẩm
+											<span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+										</a>
+									</h6>
+								</div>
+								<div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample1">
+									<div class="card-body-chat">
+										<div class="row">
+											<div class="col-md-12">
+												<div id="checkBoxes1">
+													@await Component.InvokeAsync("Category")
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="accordion" id="accordionMain2">
+								<div class="card-header-new" id="headingTwo">
+									<h6 class="filter-title">
+										<a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+											Tác giả
+											<span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+										</a>
+									</h6>
+								</div>
+								<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample2">
+									<div class="card-body-chat">
+										<div id="checkBoxes2">
+                                            @await Component.InvokeAsync("Author")
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="accordion" id="accordionMain3">
+								<div class="card-header-new" id="headingYear">
+									<h6 class="filter-title">
+										<a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapseYear" aria-expanded="true" aria-controls="collapseYear">
+											Nhà xuát bản
+											<span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+										</a>
+									</h6>
+								</div>
+								<div id="collapseYear" class="collapse" aria-labelledby="headingYear" data-bs-parent="#accordionExample2">
+									<div class="card-body-chat">
+										<div id="checkBoxes02">
+                                            @await Component.InvokeAsync("Publisher")
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="accordion" id="accordionMain4">
+								<div class="card-header-new" id="headingYear">
+									<h6 class="filter-title">
+										<a href="javascript:void(0);" class="w-100 collapsed" data-bs-toggle="collapse" data-bs-target="#collapsethree" aria-expanded="true" aria-controls="collapseYear">
+											Nhà phát hành
+											<span class="float-end"><i class="fa-solid fa-chevron-down"></i></span>
+										</a>
+									</h6>
+								</div>
+								<div id="collapsethree" class="collapse" aria-labelledby="headingYear" data-bs-parent="#accordionExample2">
+									<div class="card-body-chat">
+										<div id="checkBoxes02">
+											@await Component.InvokeAsync("Supplier")
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<button type="submit" class="d-inline-flex align-items-center justify-content-center btn w-100 btn-primary filter-btn">
+							<span><i class="feather-filter me-2"></i></span>Filter results
+						</button>
+						<a href="#" class="reset-filter">Reset Filter</a>
+					</form>
+				</div>
+				<div class="col-lg-9">
+					<div class="row">
+						<!-- col -->
+						<div class="col-xxl-4 col-lg-6 col-md-6 col-12">
+							<div class="listing-item">
+								<div class="listing-img">
+									<a href="listing-details.html">
+										<img src="~/img/cars/car-03.jpg" class="img-fluid" alt="Audi">
+									</a>
+									<div class="fav-item justify-content-end">
+										<a href="javascript:void(0)" class="fav-icon">
+											<i class="feather-heart"></i>
+										</a>
+									</div>
+									<span class="featured-text">Audi</span>
+								</div>
+								<div class="listing-content">
+									<div class="listing-features d-flex align-items-end justify-content-between">
+										<div class="list-rating">
+											<a href="javascript:void(0)" class="author-img">
+												<img src="~/img/profiles/avatar-03.jpg" alt="author">
+											</a>
+											<h3 class="listing-title">
+												<a href="listing-details.html">Audi A3 2019 new</a>
+											</h3>
+											<div class="list-rating">
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star filled"></i>
+												<i class="fas fa-star"></i>
+												<span>(4.0) 150 Reviews</span>
+											</div>
+										</div>
+										<div class="list-km">
+											<span class="km-count"><img src="~/img/icons/map-pin.svg" alt="author">3.5m</span>
+										</div>
+									</div>
+									<div class="listing-details-group">
+										<ul>
+											<li>
+												<span><img src="~/img/icons/car-parts-05.svg" alt="Manual"></span>
+												<p>Manual</p>
+											</li>
+											<li>
+												<span><img src="~/img/icons/car-parts-02.svg" alt="10 KM"></span>
+												<p>10 KM</p>
+											</li>
+											<li>
+												<span><img src="~/img/icons/car-parts-03.svg" alt="Petrol"></span>
+												<p>Petrol</p>
+											</li>
+										</ul>
+										<ul>
+											<li>
+												<span><img src="~/img/icons/car-parts-04.svg" alt="Power"></span>
+												<p>Power</p>
+											</li>
+											<li>
+												<span><img src="~/img/icons/car-parts-05.svg" alt="2019"></span>
+												<p>2019</p>
+											</li>
+											<li>
+												<span><img src="~/img/icons/car-parts-06.svg" alt="Persons"></span>
+												<p>4 Persons</p>
+											</li>
+										</ul>
+									</div>
+									<div class="listing-location-details">
+										<div class="listing-price">
+											<span><i class="feather-map-pin"></i></span>Newyork, USA
+										</div>
+										<div class="listing-price">
+											<h6>$45 <span>/ Day</span></h6>
+										</div>
+									</div>
+									<div class="listing-button">
+										<a href="listing-details.html" class="btn btn-order"><span><i class="feather-calendar me-2"></i></span>Rent Now</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!-- /col -->
+					</div>
+					<!--Pagination-->
+					<div class="blog-pagination">
+						<nav>
+							<ul class="pagination page-item justify-content-center">
+								<li class="previtem">
+									<a class="page-link" href="#"><i class="fas fa-regular fa-arrow-left me-2"></i> Prev</a>
+								</li>
+								<li class="justify-content-center pagination-center">
+									<div class="page-group">
+										<ul>
+											<li class="page-item">
+												<a class="page-link" href="#">1</a>
+											</li>
+											<li class="page-item">
+												<a class="active page-link" href="#">2 <span class="visually-hidden">(current)</span></a>
+											</li>
+											<li class="page-item">
+												<a class="page-link" href="#">3</a>
+											</li>
+										</ul>
+									</div>
+								</li>
+								<li class="nextlink">
+									<a class="page-link" href="#">Next <i class="fas fa-regular fa-arrow-right ms-2"></i></a>
+								</li>
+							</ul>
+						</nav>
+					</div>
+					<!--/Pagination-->
+
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- /Car Grid View -->
