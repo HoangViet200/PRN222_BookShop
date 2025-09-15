@@ -1,12 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using PRN222_DreamsCar.Models;
-using System.Collections.Generic;
-using System.Data;
-using System.Reflection.Emit;
+
 
 namespace PRN222_BookShop.Models
 {
-    public class DBContext : DbContext
+    public class DBContext : IdentityDbContext<AppUserModel>
     {
         public DBContext(DbContextOptions<DBContext> options)
             : base(options) { }
@@ -17,6 +16,9 @@ namespace PRN222_BookShop.Models
         public DbSet<Category> Categories { get; set; }
         public DbSet<SubCategory> SubCategories { get; set; }
         public DbSet<Book> Books { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetail> OrderDetails { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

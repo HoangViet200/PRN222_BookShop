@@ -1,5 +1,185 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    var bookDetail = ViewBag.BookDetail as Book;
+	var paragraphs = bookDetail.Description.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
 }
+<style>
+	.detail-product {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
+
+		<!-- Breadscrumb Section -->
+<div class="breadcrumb-bar">
+	<div class="container">
+		<div class="row align-items-center text-center">
+			<div class="col-md-12 col-12">
+				<h2 class="breadcrumb-title">Book Detail</h2>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /Breadscrumb Section -->
+
+<section class="section product-details">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 theiaStickySidebar">
+				<div class="detail-product">
+					<div class="product-img">
+						<img src="@bookDetail.ImageUrl" alt="Slider" width="375">
+					</div>
+				</div>
+			</div>
+
+
+			<div class="col-lg-7 ">
+				<div class="review-sec mt-0">
+					<div class="review-header">
+						<h3>@bookDetail.Name</h3>
+						<h4></h4>
+					</div>
+					<div class="listing-price">
+						<h6>@string.Format("{0:#,##0} đ", bookDetail.UnitPrice)</h6>
+					</div>
+					<form asp-controller="Cart" asp-action="AddToCart" method="post">
+						<input type="hidden" name="bookId" value="@bookDetail.BookID" />
+
+						<div class="mb-3">
+							<label for="quantity" class="form-label fw-bold">Số lượng:</label>
+							<div class="d-flex align-items-center">
+								<input type="number" name="quantity" id="quantity" min="1" value="1"
+									   class="form-control text-center" style="width: 80px;" />
+							</div>
+						</div>
+
+						<div class="search-btn">
+							<button type="button" class="btn btn-primary btn-add-cart" data-id="@bookDetail.BookID">
+								<span><i class="feather-shopping-cart me-2"></i></span>Thêm vào giỏ hàng
+							</button>
+
+						</div>
+					</form>
+
+
+				</div>
+
+				<div class="review-sec mt-0">
+					<div class="review-header">
+						<h4>Thông tin chi tiết</h4>
+					</div>
+					<div class="review-header">
+						<span>Mã Hàng </span> 
+						<h5>@bookDetail.ISBN </h5>
+					</div>
+					<div class="review-header">
+						<span>Tên Nhà Cung Cấp</span> 
+						<h5>@bookDetail.Supplier.Name</h5>
+					</div>
+					<div class="review-header">
+						<span>Tác giả</span>
+						<h5>@bookDetail.Author.Name</h5>
+					</div>
+					<div class="review-header">
+						<span>NXB</span>
+                        <h5>@bookDetail.Publisher.Name</h5>
+					</div>
+					<div class="review-header">
+						<span>Năm XB</span>
+						<h5>@bookDetail.PublishDate.Value.ToString("yyyy") </h5>
+					</div>
+					<div class="review-header">
+						<span>Trọng lượng (gr)</span>
+                        <h5>@bookDetail.Weight</h5>
+					</div>
+					<div class="review-header">
+						<span>Kích Thước Bao Bì</span>
+						<h5>@bookDetail.Dimensions</h5>
+					</div>
+					<div class="review-header">
+						<span>Số trang</span>
+                        <h5>@bookDetail.PageCount</h5>
+					</div>
+				</div>
+
+				<div class="review-sec mt-0">
+					<div class="review-header">
+						<h4>Mô tả sản phẩm</h4>
+					</div>
+					<h4>@bookDetail.Title</h4>
+					<div class="description-list">
+						<br />
+						@foreach(var paragraph in paragraphs)
+						{
+							<p>@paragraph</p>
+                        }
+					</div>
+				</div>
+
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="details-car-grid">
+					<div class="details-slider-heading">
+						<h3>You May be Interested in</h3>
+					</div>
+					<div class="owl-carousel rental-deal-slider details-car owl-theme">
+						<!-- owl carousel item -->
+						@foreach ( var books in Model)
+						{
+													
+						<div class="rental-car-item">
+							<div class="listing-item pb-0">
+								<div class="listing-img">
+										<a asp-action="Detail" asp-route-bookId="@books.BookID">
+											<img src="@books.ImageUrl" class="img-fluid" alt="Audi">
+									</a>
+								</div>
+								<div class="listing-content">
+									<div class="listing-features d-flex align-items-end justify-content-between">
+										<div class="list-rating">
+											<h3 class="listing-title">
+													<a asp-action="Detail" asp-route-bookId="@books.BookID">@books.Name</a>
+											</h3>
+										</div>
+									</div>
+									<div class="listing-location-details">
+										<div class="listing-price">
+												<h6>@string.Format("{0:#,##0} đ", books.UnitPrice)</h6>
+										</div>
+									</div>
+									<div class="listing-button">
+										<a href="listing-details.html" class="btn btn-order"><span><i class="feather-shopping-cart me-2"></i></span>Add to cart</a>
+									</div>
+								</div>
+							</div>
+						</div>
+						}
+						<!-- /owl carousel item -->
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+	$(document).on('click', '.btn-add-cart', function (e) {
+		e.preventDefault(); // Ngăn chặn form submit
+		var bookId = $(this).data('id');
+		$.post('/Cart/AddToCartAjax', { bookId: bookId, quantity: 1 }, function (response) {
+			if (response.success) {
+				alert("Đã thêm vào giỏ hàng! Tổng số sản phẩm: " + response.totalItems);
+				// Cập nhật số lượng hiển thị trên icon giỏ hàng (nếu có)
+				$('#cart-count').text(response.totalItems);
+			} else {
+				alert("Không thể thêm sản phẩm. Vui lòng thử lại!");
+			}
+		});
+	});
+</script>
+

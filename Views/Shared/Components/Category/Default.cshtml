@@ -2,27 +2,36 @@
 
 <ul class="list-group">
     <li class="list-group-item">
-        <a href="javascript:void(0);" onclick="showSubCategories()"> All Categories</a>
+        <a asp-controller="Book" asp-action="Index">All Categories</a>
     </li>
-    @foreach (var item in Model)
+@foreach (var item in Model)
+{
+    <li class="list-group-item category-item @(ViewBag.SelectedCategoryId == item.CategoryID ? "active" : "")"
+        data-category-id="@item.CategoryID">
+        <a asp-controller="Book" asp-action="Index" asp-route-categoryId="@item.CategoryID">
+            @item.Name
+        </a>
+    </li>
+
+    if (item.SubCategories?.Any() == true)
     {
-        <li class="list-group-item category-item" data-category-id="@item.CategoryID">
-            <a href="javascript:void(0);" onclick="showSubCategories(@item.CategoryID)">
-                @item.Name
-            </a>
-        </li>
-        if (item.SubCategories?.Any() == true)
-        {
-            <ul class="subcategory-list" style="display: none;" id="sub_@item.CategoryID">
-                @foreach (var sub in item.SubCategories)
-                {
-                    <li class="list-group-item">
+        var showSub = (ViewBag.SelectedCategoryId != null && ViewBag.SelectedCategoryId == item.CategoryID)
+            ? "block" : "none";
+
+        <ul class="subcategory-list" style="display:@showSub" id="sub_@item.CategoryID">
+            @foreach (var sub in item.SubCategories)
+            {
+                <li class="list-group-item ">
+                    <a asp-controller="Book" asp-action="Index" asp-route-categoryId="@item.CategoryID" asp-route-subcategoryId="@sub.SubCategoryID">
                         @sub.Name
-                    </li>
-                }
-            </ul>
-        }
+                    </a>
+                </li>
+            }
+        </ul>
     }
+}
+
+
 </ul>
 
 <style>
@@ -45,16 +54,3 @@
 </style>
 
 
-<script>
-    function showSubCategories(categoryId) {
-        document.querySelectorAll('.category-item').forEach(el => el.style.display = 'none');
-        document.querySelectorAll('.subcategory-list').forEach(el => el.style.display = 'none');
-        document.querySelector('[data-category-id="' + categoryId + '"]').style.display = 'list-item';
-        document.getElementById('sub_' + categoryId).style.display = 'block';
-    }
-
-    function showAllCategories() {
-        document.querySelectorAll('.category-item').forEach(el => el.style.display = 'list-item');
-        document.querySelectorAll('.subcategory-list').forEach(el => el.style.display = 'none');
-    }
-</script>

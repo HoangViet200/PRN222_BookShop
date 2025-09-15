@@ -4,7 +4,7 @@
 	@foreach (var item in Model)
 	{
 		<label class="custom_check w-100">
-			<input type="checkbox" name="username">
+			<input type="checkbox" name="publisher" value="@item.PublisherID" @(ViewBag.SelectedPublisherId.Contains(item.PublisherID)?"checked": "")>
 			<span class="checkmark"></span> @item.Name
 		</label>
 	}

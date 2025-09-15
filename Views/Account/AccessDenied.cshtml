@@ -1,0 +1,17 @@
+﻿@{
+    ViewData["Title"] = "Access Denied";
+}
+
+<div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card shadow-lg text-center p-4" style="max-width: 400px;">
+        <div class="card-body">
+            <h2 class="text-danger mb-3">
+                <i class="bi bi-shield-lock"></i> Access Denied
+            </h2>
+            <p class="mb-4">Bạn không có quyền truy cập trang này.</p>
+            <a class="btn btn-primary w-100" asp-controller="Book" asp-action="Index">
+                Về trang chủ
+            </a>
+        </div>
+    </div>
+</div>

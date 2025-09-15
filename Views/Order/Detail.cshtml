@@ -1,0 +1,66 @@
+﻿@model PRN222_BookShop.Models.Order
+
+@{
+    ViewData["Title"] = "Chi tiết đơn hàng";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-sm">
+                <div class="card-header bg-primary text-white text-center">
+                    <h4 class="mb-0">Chi tiết đơn hàng #@Model.OrderID</h4>
+                </div>
+                <div class="card-body">
+                    <div class="mb-3">
+                        <p><strong>Địa chỉ giao hàng:</strong> @Model.ShippingAddress</p>
+                        <p><strong>Ngày đặt:</strong> @Model.OrderDate.ToString("dd/MM/yyyy")</p>
+                        <p>
+                            <strong>Trạng thái:</strong>
+                            @if (Model.Status == "Completed")
+                            {
+                                <span class="badge bg-success">Hoàn tất</span>
+                            }
+                            else
+                            {
+                                <span class="badge bg-warning text-dark">@Model.Status</span>
+                            }
+                        </p>
+                    </div>
+
+                    <h5 class="mb-3">Danh sách sản phẩm</h5>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped text-center align-middle">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Tên sách</th>
+                                    <th>Số lượng</th>
+                                    <th>Giá</th>
+                                    <th>Tổng</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var detail in Model.OrderDetails)
+                                {
+                                    <tr>
+                                        <td>@detail.Book?.Name</td>
+                                        <td>@detail.Quantity</td>
+                                        <td>@string.Format("{0:#,##0} đ", detail.Price)</td>
+                                        <td>@string.Format("{0:#,##0} đ", detail.Price * detail.Quantity)</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="text-end text-primary">Tổng tiền: @string.Format("{0:#,##0} đ", Model.TotalAmount)</h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a asp-action="Index" class="btn btn-secondary">
+                        <i class="fa fa-arrow-left me-1"></i> Quay lại danh sách
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

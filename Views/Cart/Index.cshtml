@@ -1,0 +1,72 @@
+﻿@model PRN222_BookShop.Models.ShoppingCart
+
+<div class="container mt-4">
+    <h2 class="mb-4">Giỏ hàng</h2>
+
+    @if (Model.Items.Count == 0)
+    {
+        <div class="alert alert-info text-center">Giỏ hàng trống</div>
+        <a class="btn btn-success disabled" aria-disabled="true">Thanh toán</a>
+    }
+    else
+    {
+        <div class="card shadow-sm">
+            <div class="card-body p-0">
+                <table class="table table-striped table-hover mb-0">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th scope="col">Ảnh</th>
+                            <th scope="col">Tên sách</th>
+                            <th scope="col" style="width:150px;">Số lượng</th>
+                            <th scope="col">Giá</th>
+                            <th scope="col">Tổng</th>
+                            <th scope="col">Thao tác</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle text-center">
+                        @foreach (var item in Model.Items)
+                        {
+                            <tr>
+                                <td>
+                                    <img src="@item.ImageUrl" class="img-thumbnail" style="width:60px;" />
+                                </td>
+                                <td class="text-start">@item.BookName</td>
+                                <td>
+                                    <form asp-action="UpdateCart" method="post" class="d-flex justify-content-center">
+                                        <input type="hidden" name="bookId" value="@item.BookID" />
+                                        <input type="number" name="quantity" value="@item.Quantity" min="1" class="form-control form-control-sm text-center" style="width:70px;" />
+                                        <button type="submit" class="btn btn-sm btn-primary ms-2">Cập nhật</button>
+                                    </form>
+                                </td>
+                                <td>@string.Format("{0:#,##0} đ", item.Price)</td>
+                                <td>@string.Format("{0:#,##0} đ", item.TotalPrice)</td>
+                                <td>
+                                    <form asp-action="RemoveFromCart" method="post">
+                                        <input type="hidden" name="bookId" value="@item.BookID" />
+                                        <button type="submit" class="btn btn-sm btn-danger">Xóa</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6 text-start">
+                <form asp-action="ClearCart" method="post" style="display:inline-block;">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="bi bi-trash"></i> Xóa toàn bộ
+                    </button>
+                </form>
+            </div>
+            <div class="col-md-6 text-end">
+                <h4 class="fw-bold">Tổng cộng: @string.Format("{0:#,##0} đ", Model.GetTotalPrice())</h4>
+                <a asp-controller="Checkout" asp-action="Index" class="btn btn-success btn-lg mt-2">
+                    <i class="bi bi-credit-card"></i> Thanh toán
+                </a>
+            </div>
+        </div>
+    }
+</div>

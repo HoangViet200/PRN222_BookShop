@@ -1,0 +1,23 @@
+﻿@{
+    ViewData["Title"] = "Đặt hàng thành công";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-lg text-center p-5" style="max-width: 500px; width: 100%;">
+        <div class="card-body">
+            <h2 class="text-success mb-4">
+                <i class="bi bi-check-circle-fill"></i> Đặt hàng thành công!
+            </h2>
+            <p class="lead mb-3">Mã đơn hàng của bạn là:</p>
+            <h4 class="text-primary fw-bold">@ViewBag.OrderID</h4>
+            <hr class="my-4" />
+            <p class="mb-4">
+                Cảm ơn bạn đã mua hàng tại cửa hàng của chúng tôi!
+                Chúng tôi sẽ sớm xử lý đơn hàng.
+            </p>
+            <a href="/Book" class="btn btn-primary btn-lg">
+                <i class="bi bi-arrow-left-circle"></i> Tiếp tục mua sắm
+            </a>
+        </div>
+    </div>
+</div>

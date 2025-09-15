@@ -1,0 +1,32 @@
+﻿@model PRN222_BookShop.ViewModels.LoginViewModel
+
+
+	<div class="login-wrapper">
+		<div class="loginbox">
+			<div class="login-auth">
+				<div class="login-auth-wrap">
+					<div class="sign-group">
+						<a asp-controller="Book" asp-action="Index" class="btn sign-up"><span><i class="fe feather-corner-down-left" aria-hidden="true"></i></span> Back To Home</a>
+					</div>
+					<h1>Login In</h1>
+					<form asp-action="Login" method="post">
+					<div asp-validation-summary="All" class="text-danger"></div>
+
+						<div class="input-block">
+							<label class="form-label" asp-for="Email">Email <span class="text-danger" asp-validation-for="Email">*</span></label>
+							<input type="email" class="form-control" asp-for="Email">
+						</div>
+						<div class="input-block">
+							<label class="form-label" asp-for="Password">Password <span class="text-danger" asp-validation-for="Password">*</span></label>
+							<div class="pass-group">
+								<input type="password" class="form-control pass-input" asp-for="Password" type="password">
+								<span class="fas fa-eye-slash toggle-password"></span>
+							</div>
+						</div>
+						<button type="submit" class="btn btn-outline-light w-100 btn-size mt-1">Sign In</button>
+						<div class="text-center dont-have">Don't have an account yet? <a asp-controller="Account" asp-action="Register">Register</a></div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
